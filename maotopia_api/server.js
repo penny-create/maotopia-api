@@ -9,11 +9,6 @@ app.use(express.json());
 // ✅ 這裡是你 LINE Messaging API 的 Token
 const LINE_TOKEN = "MCDA7LNbI0SvMGoX6CKeBveY2A3qqIY0WRE3ggWqlqRFxxqnyFo+B6pPN9Jjky5gNWKwdzyohI0Lfru1orWI5dbrL4hxrSW7nfuns5cyazCEqWnXPJFYNuavhr5wMRMgxpI9HkYBJpiL+gQHgeR1QAdB04t89/1O/w1cDnyilFU=";
 
-// ✅ 測試用首頁
-app.get("/", (req, res) => {
-  res.send("🚀 Maotopia API is running!");
-});
-
 // ✅ 表單接收端
 app.post("/line", async (req, res) => {
   try {
@@ -68,4 +63,5 @@ app.post("/line", async (req, res) => {
 // ✅ Render 啟動
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
 
