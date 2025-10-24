@@ -69,10 +69,17 @@ app.post("/line", async (req, res) => {
     res.status(500).json({ status: "error", message: err.message });
   }
 });
+// ✅ 延遲1秒關閉 LIFF 頁面
+setTimeout(() => {
+  if (liff && liff.closeWindow) {
+    liff.closeWindow();
+  }
+}, 1000);
 
 // ✅ Render 啟動
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
 
 
 
