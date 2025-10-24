@@ -63,22 +63,18 @@ app.post("/line", async (req, res) => {
       })
     });
 
-    res.json({ status: "success", message: "推播成功！" });
+    res.json({ status: "success", message: "送出成功！" });
   } catch (err) {
     console.error("❌ 錯誤:", err);
     res.status(500).json({ status: "error", message: err.message });
   }
 });
-// ✅ 延遲1秒關閉 LIFF 頁面
-setTimeout(() => {
-  if (liff && liff.closeWindow) {
-    liff.closeWindow();
-  }
-}, 1000);
+
 
 // ✅ Render 啟動
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
 
 
 
