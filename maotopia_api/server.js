@@ -27,9 +27,19 @@ app.post("/line", async (req, res) => {
 🐕 品種：${data.breed || '未填'}
 ⚖️ 體重：${data.weight || '未填'} kg
 🎂 年齡：${data.age || '未填'} 歲
-🌈 健康狀況：${data.health || '未填'}
-💫 個性檔案：${data.personality || '未填'}
-⚠️ 特殊行為：${data.specialBehavior || '無'}
+🌈 健康狀況：${data.health === '有狀況' 
+  ? `${data.health}（${data.healthDetail || '未填說明'}）` 
+  : (data.health || '未填')}
+💫 個性檔案：${
+  Array.isArray(data.personality)
+    ? data.personality.join("、")
+    : data.personality || '未填'
+}
+⚠️ 特殊行為：${
+  Array.isArray(data.specialBehavior)
+    ? data.specialBehavior.join("、")
+    : data.specialBehavior || '無'
+}
 👨‍🚀 飼主：${data.ownerName || '未填'}
 ☎️ 電話：${data.phone || '未填'}
 🏠 地址：${data.address || '未填'}
@@ -63,5 +73,6 @@ app.post("/line", async (req, res) => {
 // ✅ Render 啟動
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
 
 
